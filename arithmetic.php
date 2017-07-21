@@ -1,44 +1,85 @@
 <?php
 
-$a = 200000;
 
-$b = -86;
+fwrite(STDOUT, "Pick two numeric numbers for arithmetic operations. \n");
+
+fwrite(STDOUT, "First Number? \n");
+$firstNumber = trim(fgets(STDIN));
+
+fwrite(STDOUT, "Second Number? \n");
+$secondNumber = trim(fgets(STDIN));
+
+
+
 
 function add($a, $b)
 {
+	if (is_numeric($a) && is_numeric($b)){
     return $a + $b;
+	
+	} else {
+		echo throwErrorMessage();
+	}
 }
 
 function subtract($a, $b)
 {
+	if (is_numeric($a) && is_numeric($b)){
     return $a - $b;
+	
+	} else {
+		echo throwErrorMessage();
+	}
 }
 
 function multiply($a, $b)
 {
+	if (is_numeric($a) && is_numeric($b)){
     return $a * $b;
+	
+	} else {
+		echo throwErrorMessage();
+	}
 }
 
 function divide($a, $b)
 {
+	if (is_numeric($a) && is_numeric($b)){
     return $a / $b;
+	
+	} else {
+		echo throwErrorMessage();
+	}
 }
 
 function modulus($a, $b)
 {
+	if (is_numeric($a) && is_numeric($b)){
 	return $a % $b; 
+	
+	} else {
+		echo throwErrorMessage();
+	}
 }
+
+function throwErrorMessage(){
+	return "ERROR: Both arguments must be numbers!" . PHP_EOL;
+}
+
 
 // Add code to test your functions here
 
-$addResult = add(1, 2);
+$addResult = add($firstNumber, $secondNumber);
 
-$subResult = subtract(8, 2);
+$subResult = subtract($firstNumber, $secondNumber);
 
-$multiplyResult = multiply(8, 2);
+$multiplyResult = multiply($firstNumber, $secondNumber);
 
-$divideResult = divide(10, 2);
+$divideResult = divide($firstNumber, $secondNumber);
 
-$modResult = modulus(8, 2);
+$modResult = modulus($firstNumber, $secondNumber);
 
-echo "add = $addResult, subtract = $subResult, multiply = $multiplyResult, divide = $divideResult, modulus = $modResult" . PHP_EOL;
+echo "added = $addResult, subtracted = $subResult, multiplied = $multiplyResult, divided = $divideResult, modulused = $modResult" . PHP_EOL;
+
+
+
