@@ -12,9 +12,9 @@ $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 function existsInArray($needle, $haystack) 
 {
 	if (array_search($needle, $haystack) === false) {
-		return "False";	
+		return false;
 	} else {
-		return "True";
+		return true;
 	}
 }
 
@@ -33,3 +33,5 @@ $comparison = compareArrays($names, $compare);
 echo "the result of Tina is $result1" . PHP_EOL;
 echo "the result of Bob is $result2" . PHP_EOL;
 echo "There are $comparison of the same name in arrays" . PHP_EOL;
+
+
