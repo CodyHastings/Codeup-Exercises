@@ -1,9 +1,17 @@
 <?php
 
+function appendToFile($filename, $appendMessage)
+{
+	$handle = fopen($filename, 'a');
+	fwrite($handle, $appendMessage);
+	fclose($handle);
+
+}
+
 
 function isEven($input)
 {
-	if($input % 2 === 0){
+	if(is_numeric($input) && $input % 2 === 0){
 		return true;
 	} 
 	return false;
@@ -59,7 +67,7 @@ function reverse($input)
 function random($input)
 {
 	if (is_string($input)) {
-		$shuffleStr = str_shuffle($trimmedInput);
+		$shuffleStr = str_shuffle($input);
 		return $shuffleStr[0];
 	} else if (is_array($input)) {
 		$randKey = array_rand($input);
@@ -80,11 +88,11 @@ $testString = " Jim, Halpert ";
 // print_r(random($testArray)) . PHP_EOL;
 
 
-if (isVowel("A")) {
-	echo "It's a vowel!!!" . PHP_EOL;
-} else {
-	echo "its not a vowel" . PHP_EOL;
-}
+// if (isVowel("A")) {
+// 	echo "It's a vowel!!!" . PHP_EOL;
+// } else {
+// 	echo "its not a vowel" . PHP_EOL;
+// }
 // echo first($testString) . PHP_EOL;
 // echo second($testString) . PHP_EOL;
 // echo last($testString) . PHP_EOL;
