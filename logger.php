@@ -9,20 +9,22 @@ function logMessage($logLevel, $message)
     appendToFile($fileDate, $message);
 }
 
-logInfo("This is an info message.");
-logError("This is an error message.");
 
 function logInfo($message)
 {
-	logMessage("INFO", $message);
+	$logLevel = "INFO";
+	logMessage($logLevel, $message);
 }
 
-function logError($logLevel, $message)
+function logError($message)
 {
-	logMessage("ERROR", $message);
+	$logLevel = "ERROR";
+	logMessage($logLevel, $message);
 }
 
 
+logInfo("This is an info message.");
+logError("This is an error message.");
 // Log to a file named log-YYYY-MM-DD.log where the Y, M, and D values are the 4-digit year, 
 // 2-digit month, and 2-digit day that the log is taking place.
 
