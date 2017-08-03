@@ -13,21 +13,21 @@ class Log
 
 	public function logMessage($logLevel, $message)
 	{
-    	$fileDate = "log-" . date("Y-m-d") . ".log";
+    	
     	$message = date("Y-m-d h:i:s ") ."[$logLevel]" . " " . $message . PHP_EOL;
-    	appendToFile($fileDate, $message);
+    	appendToFile($this->filename, $message);
 	}
 
-	public function logInfo($message)
+	public function info($message)
 	{
 		$logLevel = "INFO";
-		logMessage($logLevel, $message);
+		$this->logMessage($logLevel, $message);
 	}
 
-	function logError($message)
+	public function error($message)
 	{
 		$logLevel = "ERROR";
-		logMessage($logLevel, $message);
+		$this->logMessage($logLevel, $message);
 	}
 
 
