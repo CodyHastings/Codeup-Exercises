@@ -1,21 +1,34 @@
 <?php
 require_once 'phpFunctionLibrary.php';
 
-// A property called $filename where you store the name of the file for the log.
-// A method called logMessage() that will take in a log level and message as before. 
-// It will open the file stored in $filename for appending, output the message in the same format as before, and then close the handle.
-// Methods info() and error() that will take in a message and forward it on to logMessage() along with the relevant log level.
+// Take in a parameter called $prefix. If nothing is passed to the constructor, the $prefix should default to 'log'.
+// Set the $filename property of the class to $prefix-YYYY-MM-DD.log.
+// Open the $filename for appending and assign the file pointer to the property $handle.
 
 class Log
 {
 
 	public $filename;
 
+	public $handle;
+
+	public function __construct($prefix = "log") 
+	{
+		$this->filename = $prefix . "-" . date("Y-m-d") . ".log";
+	}
+
+	public function __destruct()
+	{
+		fclose($this->handle);
+	}
+
 	public function logMessage($logLevel, $message)
 	{
     	
     	$message = date("Y-m-d h:i:s ") ."[$logLevel]" . " " . $message . PHP_EOL;
-    	appendToFile($this->filename, $message);
+    	$this->handle = fopen($this->filename, 'a');
+		fwrite($this->handle, $message);
+
 	}
 
 	public function info($message)

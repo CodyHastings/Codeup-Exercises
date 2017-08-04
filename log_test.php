@@ -9,10 +9,7 @@ require_once 'phpFunctionLibrary.php';
 // Set the $filename property in the class; use the format log-YYYY-MM-DD.log.
 // Call the methods logMessage(), info(), and error() with to test the functionality of each.
 
-$log = new Log();
-
-
-$log->filename = "log-" . date("Y-m-d") . ".log";
+$log = new Log("cli");
 
 
 $log->logMessage("info", "Everything is great in php");
